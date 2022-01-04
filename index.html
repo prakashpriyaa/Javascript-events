@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>3 Type Events</title>
+    <style>
+        *{
+            margin:0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .background{
+            background-image:url("background.jpg");
+            background-size:cover;
+            background-repeat:no-repeat;
+            width: 100%;
+            height: 100vh;
+        }
+        .animation{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 90%;
+            top:10%;
+          
+        }
+        .animation img{
+            position:absolute;
+            top:50%;
+            width: 300px
+        }
+        .show{
+            animation:show 4s alternate infinite;
+        }
+        @keyframes show {
+            0%   {top: 50%;}
+            25%  {top: 300px;}
+            75%  {top: 50px}
+            100% {top: 100px;}
+        }
+        .event{
+            padding: 15px 30px;
+            border:0px;
+            background-color: black;
+            color:white;
+            font-size: 14px;
+        }
+        .section{
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+        }
+        .section .event{
+            margin:10px;
+            cursor:pointer;
+        }
+        #showone{
+            display: none;
+        }
+        #showtwo{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="section">
+            <button type="button" class="event" onclick="show()">Button one</button>
+            <button type="button" class="event" id="show1">Button two</button>
+            <button type="button" class="event" id="show2">Button three</button>
+        </div>
+        <div class="animation">
+            <img src="butterfly.gif" alt="butterfly" class="birds" id="show">
+            <img src="buttterflyone.gif" alt="butterfly" class="birds" id="showone">
+            <img src="butterflytwo.gif" alt="butterfly" class="birds" id="showtwo">
+        </div>
+    </div>
+</body>
+<script>
+    // TYPE ONE
+    function show()
+    {
+        document.getElementById("show").classList.add("show");
+        document.getElementById("showone").style.display = "none";
+        document.getElementById("showtwo").style.display = "none";
+        document.getElementById("show").style.display = "block";
+    }
+
+    //TYPE TWO
+    var show1 = document.querySelector("#show1");
+    show1.onclick = function()
+    {
+        document.getElementById("showone").classList.add("show");
+        document.getElementById("showone").style.display = "block";
+        document.getElementById("showtwo").style.display = "none";
+        document.getElementById("show").style.display = "none";
+    }
+
+    //TYPE THREE
+    var show2 = document.getElementById("show2");
+    show2.addEventListener("click",()=>{
+        document.getElementById("showtwo").classList.add("show");
+        document.getElementById("showone").style.display = "none";
+        document.getElementById("showtwo").style.display = "block";
+        document.getElementById("show").style.display = "none";
+    })
+</script>
+</html>
